@@ -13,3 +13,7 @@ app.get('/users', async(req,res)=> {
         res.status(500).json({message: err.message});
     }
 });
+
+app.get('/users/:id', getUser, (req, res)=> {
+    res.json(res.user);
+});
