@@ -32,3 +32,32 @@ app.post('/users/:id', async (req, res)=>{
         res.status(400).json({message: err.message});
     }
 })
+
+
+// Update user
+
+app.patch('/users/:id', getUser, async (req, res) => {
+
+    if (req.body.name != null) {             
+        res.user.name = req.body.name;
+    
+    }
+    
+    if (req.body.email != null) {           
+         res.user.email = req.body.email;
+    }
+    
+    if (req.body.password != null) {         
+        res.user.password = req.body.password;
+    
+    }
+    
+    try {const updatedUser = await res.user.save();
+        res.json(updatedUser);
+    
+    } catch (err) {res.json(updatedUser);
+    
+    } res.status(400).json({ message: err.message });
+    
+    });
+    
